@@ -54,16 +54,11 @@ public class Phone extends JFrame implements ActionListener {
         button[15].setBackground(Color.red);
         button[17].setBackground(Color.green);
         button[3].setBackground(Color.cyan);
-        // button[3].setText("A");
-        //button[7].setBackground(Color.red);
-        // button[7].setText("d");
-        //button[11].setBackground(Color.green);
-        // button[11].setText("i");
+
         button[12].setBackground(Color.gray);
         button[12].setText("CP Project");
         button[13].setBackground(Color.pink);
-        //button[16].setBackground(Color.yellow);
-        // button[16].setText("& Biswa");
+
         display.setFont(font);
         display.setEditable(false);
         display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -122,15 +117,11 @@ public class Phone extends JFrame implements ActionListener {
  
             int res = x.compareTo(arr[m]);
  
-            // Check if x is present at mid
             if (res == 0)
                 return m;
- 
-            // If x greater, ignore left half
             if (res > 0)
                 l = m + 1;
  
-            // If x is smaller, ignore right half
             else
                 r = m - 1;
         }
@@ -161,25 +152,23 @@ stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 reader.close();
 
 String content = stringBuilder.toString();
-//System.out.println(content);
+
 String contacts[] = content.split(",");
 String names[] = new String[contacts.length];
 String numbers[] = new String[contacts.length];
-//System.out.println(contacts.length);
 for(int i = 0; i < contacts.length; i++) {
     String temp[] = contacts[i].split("-");
     names[i] = temp[0].trim();
     numbers[i] = temp[1].trim();
-    //System.out.println("Name: " + names[i] + " Number:" + numbers[i]);
 }
 for(int i = 0; i<names.length; i++)   
 {  
 for (int j = i+1; j<names.length; j++)   
 {  
-//compares each elements of the array to all the remaining elements  
+
 if(names[i].compareTo(names[j])>0)   
 {  
-//swapping array elements  
+
 String temp = names[i];
 String temp2 = numbers[i];
 names[i] = names[j];  
@@ -189,9 +178,7 @@ numbers[j] = temp2;
 }  
 }  
 }  
-// for(int i = 0; i < contacts.length; i++) {
-//     System.out.println("Name: " + names[i] + " Number:" + numbers[i]);
-// }
+
 String name = "unknown number";
 if(!(new numCheck().check(num))){
     int nameIndex = binarySearch(names,num.trim());
@@ -205,18 +192,7 @@ if(!(new numCheck().check(num))){
         name = names[numberIndex];
     }
 }
-//System.out.println(num.trim()+""+(binarySearch(names,num.trim()))+""+binarySearch(numbers,num.trim()));
-// if(binarySearch(names,num.trim()) !=-1 || binarySearch(numbers,num.trim()) !=-1){
-//     int nameIndex = binarySearch(names,num.trim());
-//     int numberIndex = binarySearch(numbers,num.trim());
-//     if(nameIndex != -1){
-//         name = names[nameIndex];
-//         num = numbers[nameIndex];
-//     } else {
-//         name = names[numberIndex];
-//     }
-//     System.out.println("Calling "+name+"\n"+num);
-// }
+
         if ("unknown number".equals(name)?!(new numCheck().check(num)):false)
         {
             display.setText("Enter a valid number");
@@ -227,8 +203,7 @@ if(!(new numCheck().check(num))){
                 if(new DeviceChecker().work())
                 {
                     String cmd="adb shell am start -a android.intent.action.CALL tel:"+num;
-                    //  System.out.println("\f");
-                    // System.out.println("Calling "+num+"...");
+
                     Process p=Runtime.getRuntime().exec(cmd);
                     display.setText("Calling "+name+"\n"+num);
                     p.waitFor();

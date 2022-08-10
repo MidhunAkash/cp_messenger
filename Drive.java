@@ -1,5 +1,5 @@
-//import javax.sound.sampled.*;
-//import javafx.scene.media.*;
+import javax.sound.sampled.*;
+import javafx.scene.media.*;
 import java.io.*;
 class Drive
 {  
@@ -19,10 +19,10 @@ class Drive
 
     void playAudio()throws Exception
     {
- //       com.sun.javafx.application.PlatformImpl.startup(()->{});
-        // String bip = "dvoice.mp3";
-        // Media hit = new Media(new File(bip).toURI().toString());
-        // MediaPlayer mediaPlayer = new MediaPlayer(hit);
-        // mediaPlayer.play();
+       com.sun.javafx.application.PlatformImpl.startup(()->{});
+        String bip = "dvoice.mp3";
+        Media hit = new Media(new File(bip).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.play();
     }
 }
